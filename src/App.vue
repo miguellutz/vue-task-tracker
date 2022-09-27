@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <Header />
-    <AddTask @add-task="addTask" />
+    <Header @toggle-add-task="toggleAddTask" :showAddTask="showAddTask"/>
+    <div v-if="showAddTask">  <!-- alternatively use v-show -->
+      <AddTask @add-task="addTask" />
+    </div>
     <Tasks
       @delete-task="deleteTask"
       @toggle-reminder="toggleReminder"
@@ -24,10 +26,15 @@ export default {
   },
   data() {
     return {
-      tasks: []
+      tasks: [],
+      showAddTask: false
     }
   },
   methods: {
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask
+    },
+
     addTask(task) { // task comes from newTask emitted from AddTask component
       this.tasks = [...this.tasks, task]
     },
