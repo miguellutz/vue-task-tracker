@@ -26,8 +26,7 @@
 
     components: {
       Button
-    },
-    emits: ['toggle-add-task']
+    }
   }
 </script>
 
