@@ -2,6 +2,7 @@
   <header>
     <h1>{{ title }}</h1>
     <Button
+      v-show="homePage"
       @btn-click="$emit('toggle-add-task')"
       :text="showAddTask ? 'Close' : 'Add Task'"
       :color="showAddTask ? 'red' : 'green'"
@@ -26,6 +27,16 @@
 
     components: {
       Button
+    },
+
+    computed: { // computed property --> used for reactivity
+      homePage() {
+        if(this.$route.path === '/') { // access to this.$route with bunch of methods / this.$router.push() --> redirect
+          return true
+        } else {
+          return false
+        }
+      }
     }
   }
 </script>
