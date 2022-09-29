@@ -11,7 +11,7 @@
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'Tasks',
     props: {
-      tasks: Array
+      tasks: Object
     },
     components: {
       Task
